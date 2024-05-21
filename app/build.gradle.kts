@@ -69,11 +69,11 @@ dependencies {
 
     implementation(libs.androidx.navigation.compose)
 
-    implementation (libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.compose)
 
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation (libs.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     implementation(libs.androidx.datastore.preferences)
 

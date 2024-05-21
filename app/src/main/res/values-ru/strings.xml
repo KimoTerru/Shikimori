@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Shikimori</string>
+
+    <string name="watching">Смотрю</string>
+    <string name="planned">Запланировано</string>
+    <string name="completed">Просмотрено</string>
+    <string name="on_hold">Отложено</string>
+    <string name="dropped">Брошено</string>
+
+    <string name="list">Список</string>
+    <string name="calendar">Календарь</string>
+    <string name="search">Поиск</string>
+    <string name="news">Новости</string>
+    <string name="profile">Профиль</string>
+
+    <string name="filter">Фильтр</string>
+    <string name="change">Изменить</string>
+
+    <string name="anime">Аниме</string>
+    <string name="mannga_manhwa_and_ranobe">Манга, Манхва и Ранобэ</string>
+</resources>

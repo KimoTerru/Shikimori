@@ -1,8 +1,10 @@
 package com.dev.shikimori.ui.route
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -20,20 +22,17 @@ import com.dev.shikimori.ui.screen.settings.SettingsScreen
 
 @Composable
 fun AppNavGraph(
+    modifier: Modifier = Modifier,
     navController: NavHostController,
     startDestination: String = NavigationRouts.Main.route,
-    modifier: Modifier = Modifier,
-    innerPadding: PaddingValues
+    bottomBarState: MutableState<Boolean>,
+    mainPadding: PaddingValues
 ) {
     NavHost(
-        modifier = modifier.padding(innerPadding),
+        modifier = modifier.fillMaxSize(),
         navController = navController,
         startDestination = startDestination
     ) {
-
-        composable(NavigationRouts.Splash.route) {
-
-        }
 
         composable(NavigationRouts.Auth.route) {
             AuthScreen()
@@ -53,21 +52,39 @@ fun AppNavGraph(
 
         navigation(
             route = NavigationRouts.Main.route,
-            startDestination = NavigationRouts.Main.Home.route
+            startDestination = NavigationRouts.Main.Home.route,
         ) {
             composable(NavigationRouts.Main.Home.route) {
-                HomeScreen()
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = true
+                }
+                HomeScreen(
+                    navController = navController,
+                    outPadding = mainPadding
+                )
             }
             composable(NavigationRouts.Main.Calendar.route) {
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = true
+                }
                 CalendarScreen()
             }
             composable(NavigationRouts.Main.Search.route) {
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = true
+                }
                 SearchScreen()
             }
             composable(NavigationRouts.Main.News.route) {
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = true
+                }
                 NewsScreen()
             }
             composable(NavigationRouts.Main.Profile.route) {
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = true
+                }
                 ProfileScreen()
             }
         }
@@ -77,7 +94,12 @@ fun AppNavGraph(
             startDestination = NavigationRouts.AnimeDetail.Detail.route
         ) {
             composable(NavigationRouts.AnimeDetail.Detail.route) {
-                DetailScreen()
+                LaunchedEffect(Unit) {
+                    bottomBarState.value = false
+                }
+                DetailScreen(
+                    navController = navController
+                )
             }
             composable(NavigationRouts.AnimeDetail.More.route) {
 
@@ -89,9 +111,6 @@ fun AppNavGraph(
 
             }
             composable(NavigationRouts.AnimeDetail.Videos.route) {
-
-            }
-            composable(NavigationRouts.AnimeDetail.Detail.route) {
 
             }
             composable(NavigationRouts.AnimeDetail.Related.route) {
